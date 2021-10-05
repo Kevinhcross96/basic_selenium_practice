@@ -1,0 +1,32 @@
+require 'webdrivers'
+require 'rspec'
+
+driver = Selenium::WebDriver.for :chrome
+  driver.navigate.to "https://www.godaddy.com/"
+  driver.manage.window.maximize
+  driver.manage.window.resize_to(1920, 1080)
+  title = driver.title
+  current_url = driver.current_url
+  page_source = driver.page_source
+
+  puts title
+  puts current_url
+
+  if title.include? "Domain Names, Websites, Hosting & Online Marketing Tools - GoDaddy"
+    puts "Title Correct"
+  else
+    puts "Title Incorrect"
+  end
+
+  if current_url.include? "https://www.godaddy.com/"
+    puts "URL Correct"
+  else
+    puts "URL Incorrect"
+  end
+
+  if page_source.include? "Domain Names, Websites, Hosting &amp; Online Marketing Tools - GoDaddy"
+    puts "Title Found in Source"
+  else
+    puts "Title Not Found in Source"
+  end
+driver.quit
