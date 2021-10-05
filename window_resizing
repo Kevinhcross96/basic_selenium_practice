@@ -1,0 +1,8 @@
+require 'webdrivers'
+require 'rspec'
+
+driver = Selenium::WebDriver.for :chrome
+  driver.navigate.to "https://www.godaddy.com/"
+  driver.manage.window.maximize
+  driver.manage.window.resize_to(1920, 1080)
+driver.quit
